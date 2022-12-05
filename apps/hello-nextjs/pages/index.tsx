@@ -1,12 +1,19 @@
 import styles from './index.module.css';
-import RichTextEditor from '../src/components/RichTextEditor';
+import dynamic from 'next/dynamic';
+
+const DynamicRichTextEditor = dynamic(
+  () => import('../src/components/RichTextEditor'),
+  {
+    ssr: false,
+  }
+);
 
 export function Index() {
   return (
     <div className={styles.page}>
       <div className="wrapper">
         <div className="container">
-          <RichTextEditor />
+          <DynamicRichTextEditor />
         </div>
       </div>
     </div>
